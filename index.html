@@ -47,7 +47,7 @@
             </div>
             <div class="row text-center">
                 <div class="col-12">
-                    <button type="button" class="btn btn-warning">Iniciar juego</button>
+                    <button type="button" class="btn btn-warning ">Iniciar juego</button>
                 </div>
             </div>
             <div class="row text-center my-3">
@@ -76,7 +76,6 @@
 
                 </div> 
                  <div class="col-2 my-1">
-                    <div id="casillero1"></div>
                      <img src="imagen/tablero.jpg" class="img-fluid casillero" alt="tablero"  id="casillero4">
                 </div> 
                  <div class="col-2 my-1">
@@ -106,9 +105,46 @@
     </main>
       <script>
 <!-- se debera aplicar una alerta que senale cual de los dos jugadores a ganado, mediante funciones permita el cambio de imagen en el tablero , se debe de tener un array para controlar el tablero, llevar a cabo el conteo de donde se juega cada pieza para llevar el registro de como se estan ubicando -->
+const boton= document.querySelector('button');
+boton.addEventListener('click',function(event){
+    event.preventDefault();
+    const valorinput = document.querySelector('input').value;
+    console.log(valorinput);
+})
+
 <!-- funcion del tablero para que cambie de imagen al dar click-->
 const juego = document.querySelectorAll(".casillero");
 let turn =true;
+const array = new Array(9).fill(null)
+
+
+function ganador(i,j,k){
+    if (array[i]==array[j] && array[j] == array [k] && array[i] != null){
+    return true;}
+return false;
+}
+
+function jugadasg(){
+    if (ganador (0,1,2)){
+        return 1;
+    }
+    if (ganador (3,4,5)){
+        return 2;
+    }if (ganador (6,7,8)){
+        return 3;
+    }if (ganador (0,3,6)){
+        return 4;
+    }if (ganador (1,4,7)){
+        return 5;
+    }if (ganador (2,5,8)){
+        return 6;
+    }if (ganador (0,4,8)){
+        return 7;
+    }if (ganador (2,4,6)){
+        return 8;
+    }
+    return null;
+}
 juego.forEach((casillero,i)=>{
     casillero.addEventListener('click',()=>{
         if (turn){
@@ -116,9 +152,17 @@ juego.forEach((casillero,i)=>{
         }else{
             casillero.src="imagen/ciculo.jpg";
         }
-        turn = !turn
-    })
+        array[i] = turn;
+        const tganador = jugadasg();
+        if (tganador){
+            alert("ganador");
+        }
+        turn = !turn;
+    }, {once:true});
 })
+
+
+
 
 </script>
 </body>
