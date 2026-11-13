@@ -50,24 +50,25 @@
                     <button type="button" class="btn btn-warning">Iniciar juego</button>
                 </div>
             </div>
-            <div class="row text-center">
+            <div class="row text-center my-3">
                 <div class="col-12">
                     <h3>Turno:</h3>
                 </div>
             </div>
             <!-- tablero-->
             <div class="row">
+
                 <div class="col-3">
 
                 </div> 
                  <div class="col-2 ">
-                     <img src="imagen/tablero.jpg" class="img-fluid" alt="tablero" id="casillero1">
+                     <img src="imagen/tablero.jpg" class="img-fluid casillero" alt="tablero" id="casillero1">
                 </div> 
                  <div class="col-2 ">
-                     <img src="imagen/tablero.jpg" class="img-fluid" alt="tablero"  id="casillero2">
+                     <img src="imagen/tablero.jpg" class="img-fluid casillero" alt="tablero"  id="casillero2">
                 </div> 
                  <div class="col-2 ">
-                     <img src="imagen/tablero.jpg" class="img-fluid" alt="tablero" id="casillero3" >
+                     <img src="imagen/tablero.jpg" class="img-fluid casillero" alt="tablero" id="casillero3" >
                 </div> 
                  <div class="col-3">                    
                 </div> 
@@ -76,13 +77,13 @@
                 </div> 
                  <div class="col-2 my-1">
                     <div id="casillero1"></div>
-                     <img src="imagen/tablero.jpg" class="img-fluid" alt="tablero"  id="casillero4">
+                     <img src="imagen/tablero.jpg" class="img-fluid casillero" alt="tablero"  id="casillero4">
                 </div> 
                  <div class="col-2 my-1">
-                     <img src="imagen/tablero.jpg" class="img-fluid" alt="tablero" id="casillero5">
+                     <img src="imagen/tablero.jpg" class="img-fluid casillero" alt="tablero" id="casillero5">
                 </div> 
                  <div class="col-2 my-1">
-                     <img src="imagen/tablero.jpg" class="img-fluid" alt="tablero" id="casillero6">
+                     <img src="imagen/tablero.jpg" class="img-fluid casillero" alt="tablero" id="casillero6">
                 </div> 
                  <div class="col-3">                    
                 </div> 
@@ -90,13 +91,13 @@
 
                 </div> 
                  <div class="col-2 my-1">
-                     <img src="imagen/tablero.jpg" class="img-fluid" alt="tablero"  id="casillero7">
+                     <img src="imagen/tablero.jpg" class="img-fluid casillero" alt="tablero"  id="casillero7">
                 </div> 
                  <div class="col-2 ">
-                     <img src="imagen/tablero.jpg" class="img-fluid" alt="tablero" id="casillero8">
+                     <img src="imagen/tablero.jpg" class="img-fluid casillero" alt="tablero" id="casillero8">
                 </div> 
                  <div class="col-2">
-                     <img src="imagen/tablero.jpg" class="img-fluid" alt="tablero" id="casillero9">
+                     <img src="imagen/tablero.jpg" class="img-fluid casillero" alt="tablero" id="casillero9">
                 </div> 
                  <div class="col-3">                    
                 </div> 
@@ -106,12 +107,18 @@
       <script>
 <!-- se debera aplicar una alerta que senale cual de los dos jugadores a ganado, mediante funciones permita el cambio de imagen en el tablero , se debe de tener un array para controlar el tablero, llevar a cabo el conteo de donde se juega cada pieza para llevar el registro de como se estan ubicando -->
 <!-- funcion del tablero para que cambie de imagen al dar click-->
-let jugador1 =document.getElementById("casillero2");
-
-jugador1.onclick=function(){
-    jugador1.src="imagen/nel.jpg";
-}
-
+const juego = document.querySelectorAll(".casillero");
+let turn =true;
+juego.forEach((casillero,i)=>{
+    casillero.addEventListener('click',()=>{
+        if (turn){
+        casillero.src="imagen/nel.jpg";
+        }else{
+            casillero.src="imagen/ciculo.jpg";
+        }
+        turn = !turn
+    })
+})
 
 </script>
 </body>
